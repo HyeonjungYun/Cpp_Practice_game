@@ -13,14 +13,6 @@ enum equipment {
 	WEAPON = 		0b01000000
 };
 
-//#define HAT			0b00000001
-//#define UP_CLOTH	0b00000010
-//#define DOWN_CLOTH	0b00000100
-//#define SHOES		0b00001000
-//#define GLOVES		0b00010000
-//#define SHEILD		0b00100000
-//#define WEAPON		0b01000000
-
 int selectMenu() {
 	int insertMenu;
 
