@@ -3,6 +3,24 @@
 
 using namespace std;
 
+class User {
+public:
+	int m_equipmentStatus;
+	string m_name;
+
+	User();
+	User(string name);
+};
+
+User::User() : User("NoName") {
+
+}
+
+User::User(string name) {
+	m_name = name;
+	m_equipmentStatus = 0b00000000;
+}
+
 enum equipment {
 	HAT =			0b00000001,
 	UP_CLOTH =		0b00000010,
@@ -168,7 +186,6 @@ int releaseEquipment(int user) {
 
 int main() {
 	int user = 0;
-	// a는 현재 착용한 것이 없는 상태
 
 	while (1) {
 		int insertMenu = selectMenu();
