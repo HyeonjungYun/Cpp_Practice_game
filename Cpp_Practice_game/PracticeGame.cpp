@@ -6,7 +6,7 @@ using namespace std;
 class User {
 public:
 	int m_equipmentStatus;
-	int* p = &m_equipmentStatus;
+	int* m_equipmentStatusPoint = &m_equipmentStatus;
 	string m_name;
 
 	enum equipment {
@@ -24,6 +24,12 @@ public:
 
 	void equip(User user);
 	void equipHat(User user);
+	void equipUp_Cloth(User user);
+	void equipDown_Cloth(User user);
+	void equipShoes(User user);
+	void equipGloves(User user);
+	void equipShield(User user);
+	void equipWeapon(User user);
 };
 
 User::User() : User("NoName") {
@@ -42,15 +48,81 @@ void User::equip(User user) {
 
 	if (selectEquipment == 1) {
 		user.equipHat(user);
-		}
+	}if (selectEquipment == 2) {
+		user.equipUp_Cloth(user);
+	}if (selectEquipment == 3) {
+		user.equipDown_Cloth(user);
+	}if (selectEquipment == 4) {
+		user.equipShoes(user);
+	}if (selectEquipment == 5) {
+		user.equipGloves(user);
+	}if (selectEquipment == 6) {
+		user.equipShield(user);
+	}if (selectEquipment == 7) {
+		user.equipWeapon(user);
+	}
 }
 
 void User::equipHat(User user) {
-	if ((user.m_equipmentStatus & user.HAT) == user.HAT) 
+	if ((*user.m_equipmentStatusPoint & user.HAT) == user.HAT)
 		cout << "이미 착용 중 입니다.";
-	if ((user.m_equipmentStatus & user.HAT) != user.HAT) {
-		*user.p |= user.HAT;
+	if ((*user.m_equipmentStatusPoint & user.HAT) != user.HAT) {
+		*user.m_equipmentStatusPoint |= user.HAT;
 		cout << "모자를 착용했습니다." << endl;
+	}
+}
+
+void User::equipUp_Cloth(User user) {
+	if ((*user.m_equipmentStatusPoint & user.UP_CLOTH) == user.UP_CLOTH)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.UP_CLOTH) != user.UP_CLOTH) {
+		*user.m_equipmentStatusPoint |= user.UP_CLOTH;
+		cout << "상의를 착용했습니다." << endl;
+	}
+}
+
+void User::equipDown_Cloth(User user) {
+	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) == user.DOWN_CLOTH)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) != user.DOWN_CLOTH) {
+		*user.m_equipmentStatusPoint |= user.DOWN_CLOTH;
+		cout << "하의를 착용했습니다." << endl;
+	}
+}
+
+void User::equipShoes(User user) {
+	if ((*user.m_equipmentStatusPoint & user.SHOES) == user.SHOES)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.SHOES) != user.SHOES) {
+		*user.m_equipmentStatusPoint |= user.SHOES;
+		cout << "신발을 착용했습니다." << endl;
+	}
+}
+
+void User::equipGloves(User user) {
+	if ((*user.m_equipmentStatusPoint & user.GLOVES) == user.GLOVES)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.GLOVES) != user.GLOVES) {
+		*user.m_equipmentStatusPoint |= user.GLOVES;
+		cout << "장갑을 착용했습니다." << endl;
+	}
+}
+
+void User::equipShield(User user) {
+	if ((*user.m_equipmentStatusPoint & user.SHEILD) == user.SHEILD)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.SHEILD) != user.SHEILD) {
+		*user.m_equipmentStatusPoint |= user.SHEILD;
+		cout << "방패를 착용했습니다." << endl;
+	}
+}
+
+void User::equipWeapon(User user) {
+	if ((*user.m_equipmentStatusPoint & user.WEAPON) == user.WEAPON)
+		cout << "이미 착용 중 입니다.";
+	if ((*user.m_equipmentStatusPoint & user.WEAPON) != user.WEAPON) {
+		*user.m_equipmentStatusPoint |= user.WEAPON;
+		cout << "무기를 착용했습니다." << endl;
 	}
 }
 
