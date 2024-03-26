@@ -31,6 +31,22 @@ User::User(string name) {
 	m_equipmentStatus = 0b00000000;
 }
 
+class Equipment {
+public:
+	string m_nameEquipment[7];
+	Equipment();
+};
+
+Equipment::Equipment() {
+	m_nameEquipment[0] = "모자";
+	m_nameEquipment[1] = "상의";
+	m_nameEquipment[2] = "하의";
+	m_nameEquipment[3] = "신발";
+	m_nameEquipment[4] = "장갑";
+	m_nameEquipment[5] = "방패";
+	m_nameEquipment[6] = "무기";
+}
+
 int selectMenu() {
 	int insertMenu;
 
@@ -44,21 +60,12 @@ int selectMenu() {
 	return insertMenu;
 }
 
-void printEquipmentStatus(User user) {
+void printEquipmentStatus(User user, Equipment equipment) {
 	int check = 1;
 
-	string nameEquipment[7];
-	nameEquipment[0] = "모자";
-	nameEquipment[1] = "상의";
-	nameEquipment[2] = "하의";
-	nameEquipment[3] = "신발";
-	nameEquipment[4] = "장갑";
-	nameEquipment[5] = "방패";
-	nameEquipment[6] = "무기";
-
 	for (int i = 0; i <= 6; i++) {
-		if ((user.m_equipmentStatus & check) == check) cout << nameEquipment[i] << " 착용" << endl;
-		if ((user.m_equipmentStatus & check) != check) cout << nameEquipment[i] << " 미착용" << endl;
+		if ((user.m_equipmentStatus & check) == check) cout << equipment.m_nameEquipment[i] << " 착용" << endl;
+		if ((user.m_equipmentStatus & check) != check) cout << equipment.m_nameEquipment[i] << " 미착용" << endl;
 
 		check <<= 1;
 	}
@@ -68,12 +75,13 @@ void printEquipmentStatus(User user) {
 
 int main() {
 	User user;
+	Equipment equipment;
 
 	while (1) {
 		int insertMenu = selectMenu();
 
 		if (insertMenu == 1) {
-			printEquipmentStatus(user);
+			printEquipmentStatus(user, equipment);
 		}
 
 		if (insertMenu == 2) {
