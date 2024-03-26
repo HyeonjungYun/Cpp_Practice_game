@@ -6,6 +6,7 @@ using namespace std;
 class User {
 public:
 	int m_equipmentStatus;
+	int* p = &m_equipmentStatus;
 	string m_name;
 
 	enum equipment {
@@ -20,6 +21,9 @@ public:
 
 	User();
 	User(string name);
+
+	void equip(User user);
+	void equipHat(User user);
 };
 
 User::User() : User("NoName") {
@@ -28,7 +32,26 @@ User::User() : User("NoName") {
 
 User::User(string name) {
 	m_name = name;
-	m_equipmentStatus = 0b00000000;
+	m_equipmentStatus = 0;
+}
+
+void User::equip(User user) {
+	int selectEquipment;
+	cout << "어떤 장비를 착용하겠습니까?\n1.모자\n2.상의\n3.하의\n4.신발\n5.장갑\n6.방패\n7.무기" << endl;
+	cin >> selectEquipment;
+
+	if (selectEquipment == 1) {
+		user.equipHat(user);
+		}
+}
+
+void User::equipHat(User user) {
+	if ((user.m_equipmentStatus & user.HAT) == user.HAT) 
+		cout << "이미 착용 중 입니다.";
+	if ((user.m_equipmentStatus & user.HAT) != user.HAT) {
+		*user.p |= user.HAT;
+		cout << "모자를 착용했습니다." << endl;
+	}
 }
 
 class Equipment {
@@ -85,6 +108,7 @@ int main() {
 		}
 
 		if (insertMenu == 2) {
+			user.equip(user);
 		}
 
 		if (insertMenu == 3) {
