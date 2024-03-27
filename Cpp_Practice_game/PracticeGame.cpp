@@ -22,14 +22,22 @@ public:
 	User();
 	User(string name);
 
+	void setEquipment(User user);
 	void equip(User user);
 	void equipHat(User user);
+	void releaseHat(User user);
 	void equipUp_Cloth(User user);
+	void releaseUp_Cloth(User user);
 	void equipDown_Cloth(User user);
+	void releaseDown_Cloth(User user);
 	void equipShoes(User user);
+	void releaseShoes(User user);
 	void equipGloves(User user);
+	void releaseGloves(User user);
 	void equipShield(User user);
+	void releaseShield(User user);
 	void equipWeapon(User user);
+	void releaseWeapon(User user);
 };
 
 User::User() : User("NoName") {
@@ -39,6 +47,12 @@ User::User() : User("NoName") {
 User::User(string name) {
 	m_name = name;
 	m_equipmentStatus = 0;
+}
+
+void User::setEquipment(User user) {
+	int selectEquipment;
+	cout << "장비 착용 설정\n1.모자\n2.상의\n3.하의\n4.신발\n5.장갑\n6.방패\n7.무기" << endl;
+	cin >> selectEquipment;
 }
 
 void User::equip(User user) {
@@ -72,6 +86,15 @@ void User::equipHat(User user) {
 	}
 }
 
+void User::releaseHat(User user) {
+	if ((*user.m_equipmentStatusPoint & user.HAT) != user.HAT)
+		cout << "현재 모자는 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.HAT) == user.HAT) {
+		*user.m_equipmentStatusPoint -= user.HAT;
+		cout << "모자를 착용 해제했습니다." << endl;
+	}
+}
+
 void User::equipUp_Cloth(User user) {
 	if ((*user.m_equipmentStatusPoint & user.UP_CLOTH) == user.UP_CLOTH)
 		cout << "이미 착용 중 입니다.";
@@ -81,12 +104,30 @@ void User::equipUp_Cloth(User user) {
 	}
 }
 
+void User::releaseUp_Cloth(User user) {
+	if ((*user.m_equipmentStatusPoint & user.UP_CLOTH) != user.UP_CLOTH)
+		cout << "현재 상의는 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.UP_CLOTH) == user.UP_CLOTH) {
+		*user.m_equipmentStatusPoint -= user.UP_CLOTH;
+		cout << "상의를 착용 해제 했습니다." << endl;
+	}
+}
+
 void User::equipDown_Cloth(User user) {
 	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) == user.DOWN_CLOTH)
 		cout << "이미 착용 중 입니다.";
 	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) != user.DOWN_CLOTH) {
 		*user.m_equipmentStatusPoint |= user.DOWN_CLOTH;
-		cout << "하의를 착용했습니다." << endl;
+		cout << "하의를 착용 했습니다." << endl;
+	}
+}
+
+void User::releaseDown_Cloth(User user) {
+	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) != user.DOWN_CLOTH)
+		cout << "현재 하의는 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.DOWN_CLOTH) == user.DOWN_CLOTH) {
+		*user.m_equipmentStatusPoint -= user.DOWN_CLOTH;
+		cout << "하의를 착용 해제 했습니다." << endl;
 	}
 }
 
@@ -99,12 +140,30 @@ void User::equipShoes(User user) {
 	}
 }
 
+void User::releaseShoes(User user) {
+	if ((*user.m_equipmentStatusPoint & user.SHOES) != user.SHOES)
+		cout << "현재 신발은 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.SHOES) == user.SHOES) {
+		*user.m_equipmentStatusPoint -= user.SHOES;
+		cout << "신발을 착용 해제 했습니다." << endl;
+	}
+}
+
 void User::equipGloves(User user) {
 	if ((*user.m_equipmentStatusPoint & user.GLOVES) == user.GLOVES)
 		cout << "이미 착용 중 입니다.";
 	if ((*user.m_equipmentStatusPoint & user.GLOVES) != user.GLOVES) {
 		*user.m_equipmentStatusPoint |= user.GLOVES;
 		cout << "장갑을 착용했습니다." << endl;
+	}
+}
+
+void User::releaseGloves(User user) {
+	if ((*user.m_equipmentStatusPoint & user.GLOVES) != user.GLOVES)
+		cout << "현재 장갑은 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.GLOVES) == user.GLOVES) {
+		*user.m_equipmentStatusPoint -= user.GLOVES;
+		cout << "장갑을 착용 해제 했습니다." << endl;
 	}
 }
 
@@ -117,12 +176,30 @@ void User::equipShield(User user) {
 	}
 }
 
+void User::releaseShield(User user) {
+	if ((*user.m_equipmentStatusPoint & user.SHEILD) != user.SHEILD)
+		cout << "현재 방패는 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.SHEILD) == user.SHEILD) {
+		*user.m_equipmentStatusPoint -= user.SHEILD;
+		cout << "방패를 착용 해제 했습니다." << endl;
+	}
+}
+
 void User::equipWeapon(User user) {
 	if ((*user.m_equipmentStatusPoint & user.WEAPON) == user.WEAPON)
 		cout << "이미 착용 중 입니다.";
 	if ((*user.m_equipmentStatusPoint & user.WEAPON) != user.WEAPON) {
 		*user.m_equipmentStatusPoint |= user.WEAPON;
 		cout << "무기를 착용했습니다." << endl;
+	}
+}
+
+void User::releaseWeapon(User user) {
+	if ((*user.m_equipmentStatusPoint & user.WEAPON) != user.WEAPON)
+		cout << "현재 무기는 착용 중이 아닙니다.";
+	if ((*user.m_equipmentStatusPoint & user.WEAPON) == user.WEAPON) {
+		*user.m_equipmentStatusPoint -= user.WEAPON;
+		cout << "무기를 착용 해제 했습니다." << endl;
 	}
 }
 
@@ -146,10 +223,9 @@ int selectMenu() {
 	int insertMenu;
 
 	cout << "메뉴를 선택하세요" << endl;
-	cout << "1.현재상태" << endl;
-	cout << "2.장비착용" << endl;
-	cout << "3.장비해제" << endl;
-	cout << "4.종료" << endl;
+	cout << "1.캐릭터 정보" << endl;
+	cout << "2.장비창" << endl;
+	cout << "3.종료" << endl;
 	cin >> insertMenu;
 
 	return insertMenu;
@@ -176,17 +252,15 @@ int main() {
 		int insertMenu = selectMenu();
 
 		if (insertMenu == 1) {
-			printEquipmentStatus(user, equipment);
+	
 		}
 
 		if (insertMenu == 2) {
+			printEquipmentStatus(user, equipment);
 			user.equip(user);
 		}
 
-		if (insertMenu == 3) {
-		}
-
-		if (insertMenu == 4) break;
+		if (insertMenu == 3) break;
 
 	}
 }
