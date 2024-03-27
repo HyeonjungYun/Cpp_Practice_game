@@ -63,6 +63,8 @@ void User::setEquipment(User user) {
 		int selectEquipment;
 		cin >> selectEquipment;
 
+		system("cls");
+
 		if (selectEquipment == 1) {
 			user.setHat(user);
 		}if (selectEquipment == 2) {
@@ -90,6 +92,8 @@ void User::setHat(User user) {
 	cout << "모자를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
 
+	system("cls");
+
 	if (selectEquipOrRelease == 1)  user.equipHat(user);
 	if (selectEquipOrRelease == 2)  user.releaseHat(user);
 }
@@ -102,6 +106,8 @@ void User::setUp_Cloth(User user) {
 
 	cout << "상의를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
+
+	system("cls");
 
 	if (selectEquipOrRelease == 1)  user.equipUp_Cloth(user);
 	if (selectEquipOrRelease == 2)  user.releaseUp_Cloth(user);
@@ -116,6 +122,8 @@ void User::setDown_Cloth(User user) {
 	cout << "하의를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
 
+	system("cls");
+
 	if (selectEquipOrRelease == 1)  user.equipDown_Cloth(user);
 	if (selectEquipOrRelease == 2)  user.releaseDown_Cloth(user);
 }
@@ -128,6 +136,8 @@ void User::setShoes(User user) {
 
 	cout << "신발을 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
+
+	system("cls");
 
 	if (selectEquipOrRelease == 1)  user.equipShoes(user);
 	if (selectEquipOrRelease == 2)  user.releaseShoes(user);
@@ -142,6 +152,8 @@ void User::setGloves(User user) {
 	cout << "장갑을 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
 
+	system("cls");
+
 	if (selectEquipOrRelease == 1)  user.equipGloves(user);
 	if (selectEquipOrRelease == 2)  user.releaseGloves(user);
 }
@@ -155,6 +167,8 @@ void User::setShield(User user) {
 	cout << "방패를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
 
+	system("cls");
+
 	if (selectEquipOrRelease == 1)  user.equipShield(user);
 	if (selectEquipOrRelease == 2)  user.releaseShield(user);
 }
@@ -167,6 +181,8 @@ void User::setWeapon (User user) {
 
 	cout << "무기를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
+
+	system("cls");
 
 	if (selectEquipOrRelease == 1)  user.equipWeapon(user);
 	if (selectEquipOrRelease == 2)  user.releaseWeapon(user);
@@ -322,12 +338,14 @@ int selectMenu() {
 	cout << "2.장비창" << endl;
 	cout << "3.종료" << endl;
 	cin >> insertMenu;
+	system("cls");
 
 	return insertMenu;
 }
 
 void printEquipmentStatus(User user, Equipment equipment) {
 	int check = 1;
+	int exit;
 
 	for (int i = 0; i <= 6; i++) {
 		if ((user.m_equipmentStatus & check) == check) cout << equipment.m_nameEquipment[i] << " 착용" << endl;
@@ -335,8 +353,10 @@ void printEquipmentStatus(User user, Equipment equipment) {
 
 		check <<= 1;
 	}
+	cout << "1.나가기" << endl;
+	cin >> exit;
 
-	cout << endl;
+	system("cls");
 }
 
 int main() {
