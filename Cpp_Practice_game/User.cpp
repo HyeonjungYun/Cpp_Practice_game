@@ -47,30 +47,32 @@ void User::presetEquipment(User user) {
 void User::setEquipment(User user, int equipmentNumber, string equipment) {
 	int selectEquipOrRelease;
 
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) == equipmentNumber) cout << equipment << " 착용" << endl;
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) != equipmentNumber) cout << equipment << " 착용" << endl;
+	if ((user.m_equipmentStatusRep & equipmentNumber) == equipmentNumber) cout << equipment << " 착용" << endl;
+	if ((user.m_equipmentStatusRep & equipmentNumber) != equipmentNumber) cout << equipment << " 착용" << endl;
 
 	cout << equipment << "를 1.착용하십니까?\n2.해제하십니까?" << endl;
 	cin >> selectEquipOrRelease;
+
+	system("cls");
 
 	if (selectEquipOrRelease == 1)  user.equipEquipment(user, equipmentNumber, equipment);
 	if (selectEquipOrRelease == 2)  user.releaseEquipment(user, equipmentNumber, equipment);
 }
 
 void User::equipEquipment(User user, int equipmentNumber, string equipment) {
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) == equipmentNumber)
+	if ((user.m_equipmentStatusRep & equipmentNumber) == equipmentNumber)
 		cout << "이미 착용 중 입니다.";
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) != equipmentNumber) {
-		*user.m_equipmentStatusPoint |= equipmentNumber;
+	if ((user.m_equipmentStatusRep & equipmentNumber) != equipmentNumber) {
+		user.m_equipmentStatusRep |= equipmentNumber;
 		cout << equipment << "를 착용했습니다." << endl;
 	}
 }
 
 void User::releaseEquipment(User user, int equipmentNumber, string equipment) {
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) != equipmentNumber)
+	if ((user.m_equipmentStatusRep & equipmentNumber) != equipmentNumber)
 		cout << "현재 " << equipment << "는 착용 중이 아닙니다.";
-	if ((*user.m_equipmentStatusPoint & equipmentNumber) == equipmentNumber) {
-		*user.m_equipmentStatusPoint -= equipmentNumber;
+	if ((user.m_equipmentStatusRep & equipmentNumber) == equipmentNumber) {
+		user.m_equipmentStatusRep -= equipmentNumber;
 		cout << equipment <<  "를 착용 해제했습니다." << endl;
 	}
 

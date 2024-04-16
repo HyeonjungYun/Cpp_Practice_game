@@ -6,7 +6,7 @@ using namespace std;
 class User {
 public:
 	int m_equipmentStatus;
-	int* m_equipmentStatusPoint = &m_equipmentStatus;
+	int& m_equipmentStatusRep = m_equipmentStatus;
 	string m_name;
 
 	enum equipment {
