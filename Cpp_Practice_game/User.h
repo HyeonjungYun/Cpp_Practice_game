@@ -22,28 +22,18 @@ public:
 	User();
 	User(string name);
 
-	void setEquipment(User user);
-	void setHat(User user);
-	void setUp_Cloth(User user);
-	void setDown_Cloth(User user);
-	void setShoes(User user);
-	void setGloves(User user);
-	void setShield(User user);
-	void setWeapon(User user);
-	void equip(User user);
-	void equipHat(User user);
-	void releaseHat(User user);
-	void equipUp_Cloth(User user);
-	void releaseUp_Cloth(User user);
-	void equipDown_Cloth(User user);
-	void releaseDown_Cloth(User user);
-	void equipShoes(User user);
-	void releaseShoes(User user);
-	void equipGloves(User user);
-	void releaseGloves(User user);
-	void equipShield(User user);
-	void releaseShield(User user);
-	void equipWeapon(User user);
-	void releaseWeapon(User user);
+	static string hat;
+	static string upCloth;
+	static string downCloth;
+	static string gloves;
+	static string shoes;
+	static string shield;
+	static string weapon;
+
+	void presetEquipment(User user);
+	void setEquipment(User user, int equipmentNumber, string equipment);
+	void equipEquipment(User user, int equipmentNumber, string equipment);
+	void releaseEquipment(User user, int equipmentNumber, string equipment);
 };
+
 #endif _USER_

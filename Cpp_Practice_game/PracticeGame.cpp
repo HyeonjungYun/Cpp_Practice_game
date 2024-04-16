@@ -47,7 +47,7 @@ int main() {
 		}
 
 		if (insertMenu == 2) {
-			user.setEquipment(user);
+			user.presetEquipment(user);
 		}
 
 		if (insertMenu == 3) break;
